@@ -10,6 +10,7 @@ func init() {
 	fmt.Println("Initializing...")
 	initializers.LoadEnv()
 	initializers.ConnectDb()
+	initializers.SyncDb()
 }
 
 func main() {
