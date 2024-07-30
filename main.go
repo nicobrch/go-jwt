@@ -24,5 +24,7 @@ func main() {
 
 	app.POST("/signup", controllers.Signup)
 
+	app.POST("/login", controllers.Login)
+
 	app.Run()
 }

@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"net/http"
 	"os"
 	"time"
 
@@ -82,5 +83,8 @@ func Login(c *gin.Context) {
 		return
 	}
 
-	c.JSON(200, gin.H{"token": tokenString})
+	c.SetSameSite(http.SameSiteNoneMode)
+	c.SetCookie("token", tokenString, 3600, "/", "", false, true)
+
+	c.JSON(200, gin.H{})
 }
