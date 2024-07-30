@@ -72,8 +72,8 @@ func Login(c *gin.Context) {
 
 	// Generate JWT token
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-		"sub":    user.ID,
-		"expire": time.Now().Add(time.Hour * 24 * 30).Unix(),
+		"sub": user.ID,
+		"exp": time.Now().Add(time.Hour * 24 * 30).Unix(),
 	})
 
 	tokenString, err := token.SignedString([]byte(os.Getenv("SECRET")))
@@ -87,4 +87,8 @@ func Login(c *gin.Context) {
 	c.SetCookie("token", tokenString, 3600, "/", "", false, true)
 
 	c.JSON(200, gin.H{})
+}
+
+func Validate(c *gin.Context) {
+
 }
