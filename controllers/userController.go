@@ -90,5 +90,5 @@ func Login(c *gin.Context) {
 }
 
 func Validate(c *gin.Context) {
-
+	c.JSON(200, gin.H{"message": "Validated"})
 }
