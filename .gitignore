@@ -24,3 +24,8 @@ go.work.sum
 # Environment variables
 .env
 .env.*local
+
+# NPM
+node_modules/
+npm-debug.log
+yarn-error.log
