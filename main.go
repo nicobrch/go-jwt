@@ -24,13 +24,7 @@ func main() {
 	app.Use(cors.Default())
 
 	app.GET("/", func(c *gin.Context) {
-		c.HTML(200, "index.tmpl", gin.H{})
-	})
-
-	app.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
+		c.JSON(200, gin.H{"message": "Hello, World!"})
 	})
 
 	// API routing
