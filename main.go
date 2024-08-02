@@ -23,6 +23,16 @@ func main() {
 	// Web App routing
 	app.Use(cors.Default())
 
+	app.GET("/", func(c *gin.Context) {
+		c.HTML(200, "index.tmpl", gin.H{})
+	})
+
+	app.GET("/ping", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "pong",
+		})
+	})
+
 	// API routing
 	app.POST("/api/v1/signup", controllers.Signup)
 	app.POST("/api/v1/login", controllers.Login)
