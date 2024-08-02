@@ -20,7 +20,7 @@ func init() {
 func main() {
 	app := gin.Default()
 
-	// Web App routing
+	// React App routing
 	app.Use(cors.Default())
 
 	app.GET("/", func(c *gin.Context) {
