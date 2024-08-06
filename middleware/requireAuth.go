@@ -13,7 +13,7 @@ import (
 
 func RequireAuth(c *gin.Context) {
 	// Get the cookie off the request
-	tokenString, err := c.Cookie("Authorization")
+	tokenString, err := c.Cookie("jwt")
 
 	if err != nil {
 		c.AbortWithStatus(401)
