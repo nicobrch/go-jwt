@@ -84,11 +84,20 @@ func Login(c *gin.Context) {
 	}
 
 	c.SetSameSite(http.SameSiteLaxMode)
-	c.SetCookie("Authorization", tokenString, 3600, "/", "localhost", false, true)
+	c.SetCookie("jwt", tokenString, 3600, "/", "localhost", false, true)
 
 	c.JSON(200, gin.H{})
 }
 
 func Validate(c *gin.Context) {
-	c.JSON(200, gin.H{"message": "Validated"})
+	user := c.MustGet("user").(models.User)
+	c.JSON(200, gin.H{
+		"message": "validated",
+		"user":    gin.H{"id": user.ID, "email": user.Email},
+	})
+}
+
+func Logout(c *gin.Context) {
+	c.SetCookie("jwt", "", -1, "/", "localhost", false, true)
+	c.JSON(200, gin.H{"message": "Logged out"})
 }
