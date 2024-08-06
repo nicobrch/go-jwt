@@ -38,7 +38,9 @@ func main() {
 
 	app.POST("/login", controllers.Login)
 
-	app.GET("/validate", middleware.RequireAuth, controllers.Validate)
+	app.POST("/validate", middleware.RequireAuth, controllers.Validate)
+
+	app.POST("/logout", middleware.RequireAuth, controllers.Logout)
 
 	app.Run()
 }
